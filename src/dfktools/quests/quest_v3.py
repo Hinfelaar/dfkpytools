@@ -1,4 +1,4 @@
-from . import quest_core_v3
+import dfktools.quests.quest_core_v3 as quest_core_v3
 
 
 class Quest:
@@ -10,6 +10,13 @@ class Quest:
     def start_quest(self, hero_ids, quest_type, attempts, level, quest_param, private_key, nonce, gas_price_gwei,
                     tx_timeout_seconds):
         return quest_core_v3.start_quest(self.quest_core_contract_address, hero_ids, quest_type, attempts, level, quest_param,private_key, nonce, gas_price_gwei, tx_timeout_seconds, self.rpc_address, self.logger)
+
+    def multi_start_quest(self, hero_idss, quest_types, attempts, levels, quest_params, private_key, nonce, gas_price_gwei, tx_timeout_seconds):
+        return quest_core_v3.multi_start_quest(self.quest_core_contract_address, hero_idss, quest_types, attempts, levels, quest_params, private_key, nonce, gas_price_gwei, tx_timeout_seconds, self.rpc_address, self.logger)
+    
+    def multi_complete_quest(self, hero_ids, private_key, nonce, gas_price_gwei, tx_timeout_seconds):
+        return quest_core_v3.multi_complete_quest(self.quest_core_contract_address, hero_ids, private_key, nonce, gas_price_gwei, tx_timeout_seconds,
+                                            self.rpc_address, self.logger)
 
     def complete_quest(self, hero_id, private_key, nonce, gas_price_gwei, tx_timeout_seconds):
         return quest_core_v3.complete_quest(self.quest_core_contract_address, hero_id, private_key, nonce, gas_price_gwei, tx_timeout_seconds,
@@ -36,3 +43,6 @@ class Quest:
 
     def get_current_stamina(self, hero_id):
         return quest_core_v3.get_current_stamina(self.quest_core_contract_address, hero_id, self.rpc_address)
+    
+    def get_current_stamina_multiple(self, hero_ids):
+        return quest_core_v3.get_current_stamina_multiple(self.quest_core_contract_address, hero_ids, self.rpc_address)
