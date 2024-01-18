@@ -18,5 +18,5 @@ classifiers = [
 dependencies = [
     "requests",
     "web3",
-    'importlib-metadata; python_version<"3.8"',
+    'importlib-metadata; python_version="dynamic"',
 ]
